@@ -4,4 +4,5 @@ export type Upgrades = {
     fps: number,
     image: string,
     amount: number,
+    unlock: number
 }
