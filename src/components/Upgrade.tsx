@@ -35,7 +35,7 @@ const Upgrade = ({name, amount, price, image, id, money, setMoney, fps}:UpgradeP
     <Tooltip sx={{color: 'green'}} title={name === 'SuperClick' ? `SuperClick is generating ${fps * amount} gold per click`: `${name} is generating ${fps * amount} gold per second`} 
         arrow placement="left">
         <div onClick={() => handleBuy(id)}
-        className="h-16 bg-gray-500 hover:bg-gray-600 active:bg-gray-400 hover:cursor-pointer border-b-2 border-gray-700 flex">
+        className="h-16 bg-gray-500 hover:bg-gray-600 active:bg-gray-400 hover:cursor-pointer border-b-2 border-gray-800 flex">
             
             <span className="flex-1 pl-1">
                 <h3 className="text-white text-2xl">
