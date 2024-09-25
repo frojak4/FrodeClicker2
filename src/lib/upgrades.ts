@@ -17,6 +17,7 @@ export const upgrades: Upgrades[] = [
         image: snus,
         amount: 0,
         unlock: 30,
+        diamonddrop: 0.01
     },
     {
         name: 'Brus',
@@ -25,6 +26,7 @@ export const upgrades: Upgrades[] = [
         image: snus,
         amount: 0,
         unlock: 200,
+        diamonddrop: 0.02
     },
 
 ]

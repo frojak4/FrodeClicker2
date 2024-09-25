@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { LiaCoinsSolid } from "react-icons/lia";
 import { upgrades } from '../lib/upgrades';
-import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 
 type UpgradeProps = {
     name: string;

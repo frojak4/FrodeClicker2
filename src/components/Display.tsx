@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { LiaCoinsSolid } from "react-icons/lia";
+import { GiCutDiamond } from "react-icons/gi";
 
 type DisplayProps = {
-    number: number;
+    money: number;
+    diamonds: number;
+    displayDiamonds: boolean;
 }
 
-const Display = ({number}: DisplayProps) => {
+const Display = ({money, diamonds, displayDiamonds}: DisplayProps) => {
+
+
+  
+
+
+
   return (
-    <div>
-        <h3 className="text-white text-4xl p-5 flex">{number} <LiaCoinsSolid className="pt-1 text-yellow-400"/></h3>
+    <div className="flex">
+        <h3 className="text-white text-4xl p-5 flex">{money}
+           <LiaCoinsSolid className="pt-1 text-yellow-400"/>
+           </h3>
+          {displayDiamonds && 
+        <h3 className="text-white text-4xl p-5 flex">{diamonds}
+          <GiCutDiamond className="pt-1 text-cyan-600"/>
+        </h3>
+        }
     </div>
   )
 }
