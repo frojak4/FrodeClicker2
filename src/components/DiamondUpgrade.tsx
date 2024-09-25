@@ -2,6 +2,8 @@ import React from 'react'
 import { GiCutDiamond } from "react-icons/gi";
 import { diamondupgrades } from '../lib/diamondupgrades';
 import { upgrades } from '../lib/upgrades';
+import { FaCheck } from "react-icons/fa";
+
 
 type DiamondUpgradeProps = {
     name: string,
@@ -18,7 +20,7 @@ const DiamondUpgrade = ({name, price, diamonds, setDiamonds, effect, effectitemi
 
     const handleBuy = (id: number) => {
 
-        if (diamonds >= price){
+        if (diamonds >= price && !bought){
         diamondupgrades[id].bought = true;
         setDiamonds((prev) => prev -= price);
         if (effect === 'Double'){
@@ -46,9 +48,13 @@ const DiamondUpgrade = ({name, price, diamonds, setDiamonds, effect, effectitemi
                 </h3>
             </span>
             <span className='flex items-center'>
-                <h3 className={!bought ? "text-2xl flex text-gray-200" : "text-2xl flex text-gray-400"}>
-                    {price} <GiCutDiamond className={!bought ? "pt-1 text-cyan-400" : "pt-1 text-gray-500"}/> 
+                {!bought ? 
+                <h3 className="text-2xl flex text-gray-200">
+                    {price} <GiCutDiamond className="pt-1 text-cyan-400"/> 
                 </h3>
+                :
+                <FaCheck className="p-1 text-lime-400 text-2xl"/>
+                }
                 
             </span>
         </div>

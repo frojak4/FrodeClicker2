@@ -54,7 +54,7 @@ const Upgrade = ({name, amount, price, image, id, money, setMoney, fps}:UpgradeP
         </div>
     </Tooltip>
     : 
-    <Tooltip sx={{color: 'green'}} title={name === 'Snus' ? `Snus is generating ${fps * amount} gold per click`: `${name} is generating ${fps * amount} gold per second`} 
+    <Tooltip sx={{color: 'green'}} title={name === 'SuperClick' ? `SuperClick is generating ${fps * amount} gold per click`: `${name} is generating ${fps * amount} gold per second`} 
         arrow placement="left">
     <div
     className="h-16 bg-gray-700  border-b-2 border-gray-700 flex">

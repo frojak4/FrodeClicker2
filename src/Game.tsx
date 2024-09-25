@@ -10,7 +10,7 @@ import DiamondUpgrade from './components/DiamondUpgrade'
 const Game = () => {
 
     const [money, setMoney] = useState<number>(0);
-    const [diamonds, setDiamonds] = useState<number>(2);
+    const [diamonds, setDiamonds] = useState<number>(0);
     const [maxMoney, setMaxMoney] = useState<number>(0);
     const [isRunning, setIsRunning] = useState<boolean>(true);
     const [showItems, setShowItems] = useState<boolean>(true);
@@ -18,7 +18,7 @@ const Game = () => {
 
 
     const handleClick = () => {
-        setMoney((prev) => prev += upgrades[0].amount)
+        setMoney((prev) => prev += upgrades[0].amount * upgrades[0].fps)
 
         if (money > maxMoney){
             setMaxMoney(money);
@@ -50,7 +50,7 @@ const Game = () => {
             if (i !== 0){
                 newMoney += upgrade.fps * upgrade.amount;
                 if ('diamonddrop' in upgrade){
-                    if(upgrade.diamonddrop && upgrade.diamonddrop > Math.random()){
+                    if(upgrade.diamonddrop && upgrade.diamonddrop * upgrade.amount > Math.random()){
                         newDiamonds++;
                     }
                 }
