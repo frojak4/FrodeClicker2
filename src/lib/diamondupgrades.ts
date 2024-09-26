@@ -6,7 +6,7 @@ export const diamondupgrades: DiamondUpgrade[] = [
         price: 3,
         effect: 'Double',
         effectitem: 0,
-        unlock: 1,
+        unlock: 0,
         bought: false,
     },
     {
@@ -15,6 +15,14 @@ export const diamondupgrades: DiamondUpgrade[] = [
         effect: 'Double',
         effectitem: 1,
         unlock: 3,
+        bought: false,
+    },
+    {
+        name: 'Super Clique',
+        price: 20,
+        effect: 'Halve',
+        effectitem: 0,
+        unlock: 10,
         bought: false,
     }
 ]

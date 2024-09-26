@@ -8,7 +8,7 @@ export const upgrades: Upgrades[] = [
         fps: 1,
         image: snus,
         amount: 1,
-        unlock: 0,
+        unlock: 1,
     },
     {
         name: 'Snus',
@@ -21,12 +21,21 @@ export const upgrades: Upgrades[] = [
     },
     {
         name: 'Brus',
-        price: 500,
+        price: 750,
         fps: 2,
         image: snus,
         amount: 0,
         unlock: 200,
         diamonddrop: 0.02
+    },
+    {
+        name: 'Pils',
+        price: 5000,
+        fps: 6,
+        image: snus,
+        amount: 0,
+        unlock: 1000,
+        diamonddrop: 0.04
     },
 
 ]

@@ -12,9 +12,10 @@ const Game = () => {
     const [money, setMoney] = useState<number>(0);
     const [diamonds, setDiamonds] = useState<number>(0);
     const [maxMoney, setMaxMoney] = useState<number>(0);
+    const [maxDiamonds, setMaxDiamonds] = useState<number>(0);
     const [isRunning, setIsRunning] = useState<boolean>(true);
     const [showItems, setShowItems] = useState<boolean>(true);
-    const [displayDiamonds, setDisplayDiamonds] = useState<boolean>(false)
+    const [displayDiamonds, setDisplayDiamonds] = useState<boolean>(false);
 
 
     const handleClick = () => {
@@ -26,7 +27,7 @@ const Game = () => {
     }
 
     useEffect(() => {
-
+        
         const interval = setInterval(() => {
         gameLoop();
         }, 1000)
@@ -49,17 +50,21 @@ const Game = () => {
         upgrades.forEach((upgrade, i) => {
             if (i !== 0){
                 newMoney += upgrade.fps * upgrade.amount;
-                if ('diamonddrop' in upgrade){
-                    if(upgrade.diamonddrop && upgrade.diamonddrop * upgrade.amount > Math.random()){
-                        newDiamonds++;
-                    }
+                
+                if(upgrade.diamonddrop && upgrade.diamonddrop * upgrade.amount > Math.random()){
+                    newDiamonds++;
                 }
+                
             }
         })
         setDiamonds((prev) => prev + newDiamonds);
         setMoney((prev) => prev + newMoney);
         if (money > maxMoney){
             setMaxMoney(money);
+        }
+        if (diamonds > maxDiamonds){
+            setMaxDiamonds(diamonds);
+            
         }
     }
 
@@ -95,8 +100,10 @@ const Game = () => {
             </div> :
             <div>
                 {diamondupgrades.map((upgrade, i) => {
+                    if (upgrade.unlock <= maxDiamonds){
                     return <DiamondUpgrade key={i} id={i} name={upgrade.name} bought={upgrade.bought} effect={upgrade.effect} effectitemid={upgrade.effectitem}
                     diamonds={diamonds} setDiamonds={setDiamonds} price={upgrade.price}/> 
+                }
                 })}
             </div>
         }

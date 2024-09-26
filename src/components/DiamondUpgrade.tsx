@@ -26,6 +26,9 @@ const DiamondUpgrade = ({name, price, diamonds, setDiamonds, effect, effectitemi
         if (effect === 'Double'){
             upgrades[effectitemid].fps = upgrades[effectitemid].fps * 2;
         }
+        if (effect === 'Halve'){
+            upgrades[effectitemid].price = Math.floor(upgrades[effectitemid].price / 2);
+        }
         }
     }
 
@@ -35,16 +38,17 @@ const DiamondUpgrade = ({name, price, diamonds, setDiamonds, effect, effectitemi
     <div>
         <div onClick={() => handleBuy(id)}
         
-        className={!bought ? "h-16 bg-gray-500 hover:bg-gray-600 active:bg-gray-400 hover:cursor-pointer border-b-2 border-gray-800 flex" : 
+        className={!bought && price < diamonds ? "h-16 bg-gray-500 hover:bg-gray-600 active:bg-gray-400 hover:cursor-pointer border-b-2 border-gray-800 flex" : 
             'bg-gray-600 border-b-2 border-gray-800 flex h-16 hover:cursor-default'
         }>
             
             <span className="flex-1 pl-1">
-                <h3 className={!bought ? "text-white text-2xl" : "text-gray-400 text-2xl"}>
+                <h3 className={!bought && price <= diamonds ? "text-white text-2xl" : "text-gray-400 text-2xl"}>
                 {name}
                 </h3>
                 <h3>
                     {effect === 'Double' && `Doubles the effect of ${upgrades[effectitemid].name}`}
+                    {effect === 'Halve' && `Halves the price of ${upgrades[effectitemid].name}`}
                 </h3>
             </span>
             <span className='flex items-center'>
