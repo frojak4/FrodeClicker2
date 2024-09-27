@@ -5,6 +5,8 @@ import {upgrades} from './lib/upgrades'
 import Upgrade from './components/Upgrade'
 import { diamondupgrades } from './lib/diamondupgrades'
 import DiamondUpgrade from './components/DiamondUpgrade'
+import { BsFire } from "react-icons/bs";
+import Tooltip from '@mui/material/Tooltip';
 
 
 const Game = () => {
@@ -16,14 +18,20 @@ const Game = () => {
     const [isRunning, setIsRunning] = useState<boolean>(true);
     const [showItems, setShowItems] = useState<boolean>(true);
     const [displayDiamonds, setDisplayDiamonds] = useState<boolean>(false);
+    const [currentClicks, setCurrentClicks] = useState<number>(0);
+    const [fire, setFire] = useState<boolean>(false);
 
 
     const handleClick = () => {
-        setMoney((prev) => prev += upgrades[0].amount * upgrades[0].fps)
+
+        let fireMult: number = fire ? 2 : 1;
+        setMoney((prev) => prev += upgrades[0].amount * upgrades[0].fps * fireMult);
 
         if (money > maxMoney){
             setMaxMoney(money);
         }
+        setCurrentClicks((prev) => prev + 1);
+        console.log(currentClicks)
     }
 
     useEffect(() => {
@@ -47,6 +55,19 @@ const Game = () => {
     const gameLoop = () => {
         let newMoney: number = 0;
         let newDiamonds: number = 0;
+        setCurrentClicks((prevClick) => {
+            if (prevClick > 5){
+                setFire(true)
+            } else {
+                setFire(false)
+            }
+
+            return 0;
+        })
+
+
+        setCurrentClicks(0);
+
         upgrades.forEach((upgrade, i) => {
             if (i !== 0){
                 newMoney += upgrade.fps * upgrade.amount;
@@ -57,12 +78,20 @@ const Game = () => {
                 
             }
         })
-        setDiamonds((prev) => prev + newDiamonds);
+        setDiamonds((prev) => {
+            const totalDiamonds: number = prev + newDiamonds;
+            if (totalDiamonds > maxDiamonds){
+                setMaxDiamonds(totalDiamonds)
+            }
+            return totalDiamonds;
+        }
+    );
         setMoney((prev) => prev + newMoney);
         if (money > maxMoney){
             setMaxMoney(money);
         }
         if (diamonds > maxDiamonds){
+            console.log(diamonds)
             setMaxDiamonds(diamonds);
             
         }
@@ -79,6 +108,11 @@ const Game = () => {
         <div className="flex-1 flex flex-col items-center">
             <Display money={money} diamonds={diamonds} displayDiamonds={displayDiamonds}/>
             <Clicker handleClick={handleClick}/>
+            <div className="flex-1 flex items-end w-full">
+                <Tooltip title="Click 5 times a second to activate the fire. It gives you 2x clicker power." arrow placement="right">
+                {fire ? <BsFire className="text-orange-600 text-6xl m-2"/> : <BsFire className="text-gray-500 text-6xl m-2"/>}
+                </Tooltip>
+            </div>
         </div>
         <div className="bg-gray-800 min-w-80 min-h-48">
             <div className="bg-gray-500 text-gray-200 text-2xl text-center flex justify-between">
@@ -107,6 +141,7 @@ const Game = () => {
                 })}
             </div>
         }
+        <div className="flex-1"></div>
         </div>
     </div>
   )

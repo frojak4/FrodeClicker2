@@ -38,7 +38,7 @@ const DiamondUpgrade = ({name, price, diamonds, setDiamonds, effect, effectitemi
     <div>
         <div onClick={() => handleBuy(id)}
         
-        className={!bought && price < diamonds ? "h-16 bg-gray-500 hover:bg-gray-600 active:bg-gray-400 hover:cursor-pointer border-b-2 border-gray-800 flex" : 
+        className={!bought && price <= diamonds ? "h-16 bg-gray-500 hover:bg-gray-600 active:bg-gray-400 hover:cursor-pointer border-b-2 border-gray-800 flex" : 
             'bg-gray-600 border-b-2 border-gray-800 flex h-16 hover:cursor-default'
         }>
             

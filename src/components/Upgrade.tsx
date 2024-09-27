@@ -25,7 +25,12 @@ const Upgrade = ({name, amount, price, image, id, money, setMoney, fps}:UpgradeP
         if (price <= money){
             setMoney((prev) => prev -= price)
             upgrades[id].amount ++;
-            upgrades[id].price = Math.floor(upgrades[id].price / 2 * 2.718);
+            if (id === 0){
+                upgrades[id].price = Math.floor(upgrades[id].price * 3);
+            } else {
+                upgrades[id].price = Math.floor(upgrades[id].price / 2 * 2.718);
+            }
+            
         }
     }
 
@@ -57,7 +62,7 @@ const Upgrade = ({name, amount, price, image, id, money, setMoney, fps}:UpgradeP
     <Tooltip sx={{color: 'green'}} title={name === 'SuperClick' ? `SuperClick is generating ${fps * amount} gold per click`: `${name} is generating ${fps * amount} gold per second`} 
         arrow placement="left">
     <div
-    className="h-16 bg-gray-700  border-b-2 border-gray-700 flex">
+    className="h-16 bg-gray-700  border-b-2 border-gray-800 flex">
         
         <span className="flex-1 pl-1">
             <h3 className="text-gray-400 text-2xl">

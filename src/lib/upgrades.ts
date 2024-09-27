@@ -4,7 +4,7 @@ import { Upgrades } from './Types';
 export const upgrades: Upgrades[] = [
     {
         name: 'SuperClick',
-        price: 20,
+        price: 50,
         fps: 1,
         image: snus,
         amount: 1,
@@ -12,30 +12,39 @@ export const upgrades: Upgrades[] = [
     },
     {
         name: 'Snus',
-        price: 100,
+        price: 200,
         fps: 1,
         image: snus,
         amount: 0,
         unlock: 30,
-        diamonddrop: 0.01
+        diamonddrop: 0.001
     },
     {
         name: 'Brus',
-        price: 750,
+        price: 1500,
         fps: 2,
         image: snus,
         amount: 0,
         unlock: 200,
-        diamonddrop: 0.02
+        diamonddrop: 0.002
     },
     {
         name: 'Pils',
-        price: 5000,
+        price: 10000,
         fps: 6,
         image: snus,
         amount: 0,
         unlock: 1000,
-        diamonddrop: 0.04
+        diamonddrop: 0.004
+    },
+    {
+        name: 'VODKA',
+        price: 690000,
+        fps: 24,
+        image: snus,
+        amount: 0,
+        unlock: 1000,
+        diamonddrop: 0.01
     },
 
 ]
