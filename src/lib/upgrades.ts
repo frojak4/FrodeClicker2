@@ -20,27 +20,27 @@ export const upgrades: Upgrades[] = [
         diamonddrop: 0.001
     },
     {
-        name: 'Brus',
+        name: 'Pepsi Max',
         price: 1500,
-        fps: 2,
+        fps: 4,
         image: snus,
         amount: 0,
-        unlock: 200,
+        unlock: 750,
         diamonddrop: 0.002
     },
     {
         name: 'Pils',
-        price: 10000,
-        fps: 6,
+        price: 14000,
+        fps: 12,
         image: snus,
         amount: 0,
-        unlock: 1000,
+        unlock: 4000,
         diamonddrop: 0.004
     },
     {
         name: 'VODKA',
         price: 690000,
-        fps: 24,
+        fps: 64,
         image: snus,
         amount: 0,
         unlock: 1000,

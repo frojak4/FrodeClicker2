@@ -86,15 +86,14 @@ const Game = () => {
             return totalDiamonds;
         }
     );
-        setMoney((prev) => prev + newMoney);
-        if (money > maxMoney){
-            setMaxMoney(money);
-        }
-        if (diamonds > maxDiamonds){
-            console.log(diamonds)
-            setMaxDiamonds(diamonds);
-            
-        }
+
+        setMoney((prev) => {
+            const totalMoney = prev + newMoney;
+            if (totalMoney > maxMoney){
+                setMaxMoney(totalMoney);
+            }
+            return totalMoney;
+        })
     }
 
     const handleUpgradeToggle = (toggle: boolean) => {
@@ -109,8 +108,11 @@ const Game = () => {
             <Display money={money} diamonds={diamonds} displayDiamonds={displayDiamonds}/>
             <Clicker handleClick={handleClick}/>
             <div className="flex-1 flex items-end w-full">
-                <Tooltip title="Click 5 times a second to activate the fire. It gives you 2x clicker power." arrow placement="right">
+                <Tooltip 
+                title="Click over 5 times a second to activate the fire. It will give you 2x clicker power." arrow placement="right">
+                    <div>
                 {fire ? <BsFire className="text-orange-600 text-6xl m-2"/> : <BsFire className="text-gray-500 text-6xl m-2"/>}
+                    </div>
                 </Tooltip>
             </div>
         </div>
