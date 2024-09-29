@@ -11,7 +11,7 @@ export type Upgrades = {
 export type DiamondUpgrade = {
     name: string,
     price: number,
-    effect: string,
+    effect: 'Double'  | 'Decrease',
     effectitem: number,
     unlock: number,
     bought: boolean

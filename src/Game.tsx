@@ -7,6 +7,7 @@ import { diamondupgrades } from './lib/diamondupgrades'
 import DiamondUpgrade from './components/DiamondUpgrade'
 import { BsFire } from "react-icons/bs";
 import Tooltip from '@mui/material/Tooltip';
+import { Upgrades } from './lib/Types'
 
 
 const Game = () => {
@@ -27,9 +28,6 @@ const Game = () => {
         let fireMult: number = fire ? 2 : 1;
         setMoney((prev) => prev += upgrades[0].amount * upgrades[0].fps * fireMult);
 
-        if (money > maxMoney){
-            setMaxMoney(money);
-        }
         setCurrentClicks((prev) => prev + 1);
         console.log(currentClicks)
     }
@@ -55,7 +53,7 @@ const Game = () => {
     const gameLoop = () => {
         let newMoney: number = 0;
         let newDiamonds: number = 0;
-        setCurrentClicks((prevClick) => {
+        setCurrentClicks((prevClick: number) => {
             if (prevClick > 5){
                 setFire(true)
             } else {
@@ -68,7 +66,7 @@ const Game = () => {
 
         setCurrentClicks(0);
 
-        upgrades.forEach((upgrade, i) => {
+        upgrades.forEach((upgrade: Upgrades, i: number) => {
             if (i !== 0){
                 newMoney += upgrade.fps * upgrade.amount;
                 
@@ -78,7 +76,7 @@ const Game = () => {
                 
             }
         })
-        setDiamonds((prev) => {
+        setDiamonds((prev: number) => {
             const totalDiamonds: number = prev + newDiamonds;
             if (totalDiamonds > maxDiamonds){
                 setMaxDiamonds(totalDiamonds)
@@ -87,8 +85,8 @@ const Game = () => {
         }
     );
 
-        setMoney((prev) => {
-            const totalMoney = prev + newMoney;
+        setMoney((prev: number) => {
+            const totalMoney: number = prev + newMoney;
             if (totalMoney > maxMoney){
                 setMaxMoney(totalMoney);
             }

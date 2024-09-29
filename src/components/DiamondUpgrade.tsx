@@ -26,8 +26,8 @@ const DiamondUpgrade = ({name, price, diamonds, setDiamonds, effect, effectitemi
         if (effect === 'Double'){
             upgrades[effectitemid].fps = upgrades[effectitemid].fps * 2;
         }
-        if (effect === 'Halve'){
-            upgrades[effectitemid].price = Math.floor(upgrades[effectitemid].price / 2);
+        if (effect === 'Decrease'){
+            upgrades[effectitemid].price = Math.floor(upgrades[effectitemid].price / 10);
         }
         }
     }
@@ -48,7 +48,7 @@ const DiamondUpgrade = ({name, price, diamonds, setDiamonds, effect, effectitemi
                 </h3>
                 <h3>
                     {effect === 'Double' && `Doubles the effect of ${upgrades[effectitemid].name}`}
-                    {effect === 'Halve' && `Halves the price of ${upgrades[effectitemid].name}`}
+                    {effect === 'Decrease' && `Decreases the price of ${upgrades[effectitemid].name}`}
                 </h3>
             </span>
             <span className='flex items-center'>
