@@ -12,13 +12,13 @@ type UpgradeProps = {
     money: number;
     fps: number;
     setMoney: React.Dispatch<React.SetStateAction<number>>;
+    diamonddrop?: number
 
-    
 }
 
 
 
-const Upgrade = ({name, amount, price, image, id, money, setMoney, fps}:UpgradeProps) => {
+const Upgrade = ({name, amount, price, image, id, money, setMoney, fps, diamonddrop}:UpgradeProps) => {
 
 
     const handleBuy = (id: number): void => {
@@ -28,7 +28,7 @@ const Upgrade = ({name, amount, price, image, id, money, setMoney, fps}:UpgradeP
             if (id === 0){
                 upgrades[id].price = Math.floor(upgrades[id].price * 3);
             } else {
-                upgrades[id].price = Math.floor(upgrades[id].price / 2 * 2.718);
+                upgrades[id].price = Math.floor(upgrades[id].price * 1.15);
             }
             
         }
@@ -37,7 +37,8 @@ const Upgrade = ({name, amount, price, image, id, money, setMoney, fps}:UpgradeP
   return (
   <div>
     {money >= price ?
-    <Tooltip sx={{color: 'green'}} title={name === 'SuperClick' ? `SuperClick is generating ${fps * amount} gold per click`: `${name} is generating ${fps * amount} gold per second`} 
+    <Tooltip sx={{color: 'green'}} title={name === 'SuperClick' ? `SuperClick is generating ${fps * amount} gold per click`: 
+    `${name} is generating ${fps * amount} gold & has a ${diamonddrop && (diamonddrop * 100 * amount).toFixed(2)}% diamond chance per second`} 
         arrow placement="left">
         <div onClick={() => handleBuy(id)}
         className="h-16 bg-gray-500 hover:bg-gray-600 active:bg-gray-400 hover:cursor-pointer border-b-2 border-gray-800 flex">
@@ -59,7 +60,7 @@ const Upgrade = ({name, amount, price, image, id, money, setMoney, fps}:UpgradeP
         </div>
     </Tooltip>
     : 
-    <Tooltip sx={{color: 'green'}} title={name === 'SuperClick' ? `SuperClick is generating ${fps * amount} gold per click`: `${name} is generating ${fps * amount} gold per second`} 
+    <Tooltip sx={{color: 'green'}} title={name === 'SuperClick' ? `SuperClick is generating ${fps * amount} gold per click`: `${name} is generating ${fps * amount} gold & has a ${diamonddrop && (diamonddrop * 100 * amount).toFixed(2)}% diamond chance per second`} 
         arrow placement="left">
     <div
     className="h-16 bg-gray-700  border-b-2 border-gray-800 flex">

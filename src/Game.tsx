@@ -47,8 +47,17 @@ const Game = () => {
     if(diamonds > 0){
       setDisplayDiamonds(true)
     }
-  }, [diamonds])
-    
+
+    if (diamonds > maxDiamonds){
+        setMaxDiamonds(diamonds)
+    }
+  }, [diamonds, maxDiamonds])
+
+    useEffect(() => {
+        if (maxMoney < money){
+            setMaxMoney(money);
+        }
+    }, [money, maxMoney])
 
     const gameLoop = () => {
         let newMoney: number = 0;
@@ -78,18 +87,14 @@ const Game = () => {
         })
         setDiamonds((prev: number) => {
             const totalDiamonds: number = prev + newDiamonds;
-            if (totalDiamonds > maxDiamonds){
-                setMaxDiamonds(totalDiamonds)
-            }
+            
             return totalDiamonds;
         }
     );
 
         setMoney((prev: number) => {
             const totalMoney: number = prev + newMoney;
-            if (totalMoney > maxMoney){
-                setMaxMoney(totalMoney);
-            }
+            
             return totalMoney;
         })
     }
@@ -128,7 +133,7 @@ const Game = () => {
             {upgrades.map((upgrade, i) => {
                 if (upgrade.unlock <= maxMoney){
                 return <Upgrade key={i} id={i} money={money} setMoney={setMoney} 
-                amount={upgrade.amount} name={upgrade.name} image={upgrade.image} price={upgrade.price} fps={upgrade.fps}/>
+                amount={upgrade.amount} name={upgrade.name} image={upgrade.image} price={upgrade.price} fps={upgrade.fps} diamonddrop={upgrade.diamonddrop}/>
                 }
             })}
             </div> :

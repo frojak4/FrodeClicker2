@@ -12,7 +12,7 @@ export const upgrades: Upgrades[] = [
     },
     {
         name: 'Snus',
-        price: 200,
+        price: 150,
         fps: 1,
         image: snus,
         amount: 0,
@@ -25,25 +25,25 @@ export const upgrades: Upgrades[] = [
         fps: 4,
         image: snus,
         amount: 0,
-        unlock: 750,
+        unlock: 300,
         diamonddrop: 0.002
     },
     {
         name: 'Pils',
         price: 14000,
-        fps: 12,
+        fps: 24,
         image: snus,
         amount: 0,
-        unlock: 4000,
+        unlock: 2000,
         diamonddrop: 0.004
     },
     {
-        name: 'VODKA',
-        price: 690000,
-        fps: 64,
+        name: 'Vodka',
+        price: 69000,
+        fps: 256,
         image: snus,
         amount: 0,
-        unlock: 1000,
+        unlock: 12000,
         diamonddrop: 0.01
     },
 
