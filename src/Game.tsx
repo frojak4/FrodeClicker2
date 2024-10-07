@@ -106,7 +106,7 @@ const Game = () => {
     }
 
   return (
-    <div className="mx-auto max-w-[72rem] h-[42rem] bg-gray-900 flex">
+    <div className="mx-auto max-w-[72rem] h-5/6 bg-gray-900 flex">
         <div className="flex-1 flex flex-col items-center">
             <Display money={money} diamonds={diamonds} displayDiamonds={displayDiamonds}/>
             <Clicker handleClick={handleClick}/>
@@ -119,7 +119,7 @@ const Game = () => {
                 </Tooltip>
             </div>
         </div>
-        <div className="bg-gray-800 min-w-80 min-h-48">
+        <div className="bg-gray-800 w-4/12 min-h-48">
             <div className="bg-gray-500 text-gray-200 text-2xl text-center flex justify-between">
                 <button onClick={() => handleUpgradeToggle(true)} disabled={showItems} 
                 className="w-full h-full p-2 cursor-pointer disabled:bg-gray-600 disabled:text-gray-300">Items:</button>

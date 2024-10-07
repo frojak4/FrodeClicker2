@@ -25,9 +25,10 @@ const DiamondUpgrade = ({name, price, diamonds, setDiamonds, effect, effectitemi
         setDiamonds((prev) => prev -= price);
         if (effect === 'Double'){
             upgrades[effectitemid].fps = upgrades[effectitemid].fps * 2;
-        }
-        if (effect === 'Decrease'){
+        }else if (effect === 'Decrease'){
             upgrades[effectitemid].price = Math.floor(upgrades[effectitemid].price / 10);
+        } else if (effect === 'Ten Times'){
+            upgrades[effectitemid].fps = upgrades[effectitemid].fps * 10;
         }
         }
     }

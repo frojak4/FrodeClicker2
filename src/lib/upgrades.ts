@@ -40,11 +40,20 @@ export const upgrades: Upgrades[] = [
     {
         name: 'Vodka',
         price: 69000,
-        fps: 256,
+        fps: 175,
         image: snus,
         amount: 0,
         unlock: 12000,
-        diamonddrop: 0.01
+        diamonddrop: 0.008
+    },
+    {
+        name: 'Fireball',
+        price: 300000,
+        fps: 512,
+        image: snus,
+        amount: 0,
+        unlock: 12000,
+        diamonddrop: 0.001
     },
 
 ]
