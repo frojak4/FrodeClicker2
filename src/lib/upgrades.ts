@@ -53,7 +53,7 @@ export const upgrades: Upgrades[] = [
         image: snus,
         amount: 0,
         unlock: 12000,
-        diamonddrop: 0.001
+        diamonddrop: 0.01
     },
 
 ]
